@@ -89,3 +89,31 @@ get_max_dens_and_CI_ABC <- function(dataset_simul_sum_stats,
     
 }
 
+
+create_sum_stats_of_experiment <- function(path_recomb_file) {
+    
+    
+    # Load dataset
+    recombinants <- read.table(path_recomb_file,
+                               header = T, comment = "")
+    
+    # Extract Rec-1S and Rec-2S events
+    Rec1S <- recombinants[which(recombinants$PRODUCT == "Rec-1S"),]
+    Rec2S <- recombinants[which(recombinants$PRODUCT == "Rec-2S"),]
+    
+    # Get summary statistics
+    Rec1S_Rec2S_ratio <- nrow(Rec1S)/nrow(Rec2S)
+    
+    quart_Rec1S <- quantile(Rec1S$TRACT_LENGTH, c(0.25,0.50,0.75))
+    quart_Rec2S <- quantile(Rec2S$TRACT_LENGTH, c(0.25,0.50,0.75))
+    
+    # Put in same order as in sum stats of col_sum_stats_simul
+    sum_stats_exp <- c(Rec1S_Rec2S_ratio,
+                       mean(Rec1S$TRACT_LENGTH),
+                       quart_Rec1S,
+                       mean(Rec2S$TRACT_LENGTH),
+                       quart_Rec2S)
+    names(sum_stats_exp) <- names(sum_stats_simul)[col_sum_stats_simul]
+    
+    return (sum_stats_exp)
+}
