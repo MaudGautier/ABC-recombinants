@@ -62,3 +62,30 @@ get_CI_ABC <- function(dataset_simul_sum_stats,
           2, quantile, c(0.025, 0.975)))
     
 }
+
+
+get_max_dens_and_CI_ABC <- function(dataset_simul_sum_stats,
+                                    experimental_summary_statistics, 
+                                    col_params, col_sum_stats) {
+    
+    # Perform abc
+    abc_result <- perform_ABC(dataset_simul_sum_stats = sum_stats_simul, 
+                              experimental_summary_statistics = sum_stats_exp,
+                              col_params = col_parameters_simul,
+                              col_sum_stats = col_sum_stats_simul)
+    
+    # Get max of density function for each parameter
+    d <- apply(abc_result$adj.values[,names(dataset_simul_sum_stats[,col_params])], 
+               2, density)
+    max_dens <- t(as.matrix(lapply(d, function(dens) 10**dens$x[which.max(dens$y)])))
+    rownames(max_dens) <- c("max.density")
+    
+    # Get 95% confidence interval
+    CI <- apply(10**abc_result$adj.values[,names(dataset_simul_sum_stats[,col_params])], 
+                 2, quantile, c(0.025, 0.975))
+    
+    # Return
+    return(rbind(max_dens, CI))
+    
+}
+
