@@ -9,8 +9,12 @@ source("functions.R")
 # Parameters --------------------------------------------------------------
 
 path_sshfs <- "/Users/maudgautier/Documents/These/02_pandata_sshfs"
+
+# Simulations
 dir_simul <- "5_HFM1/Simulations_ABC_for_HFM1"
 file_sum_stats <- "Results/Perform_ABC/Summary_statistics.txt"
+col_sum_stats_simul <- c(11:12, 14:16, 18, 20:22)
+col_parameters_simul <- 2:8
 
 # Biological experiment
 dir_exp <- "5_HFM1/Sequencing_1/05_Analyses_of_Recombinants/02_Recombinants_and_False_Positives_Dataset"
@@ -19,8 +23,7 @@ file_recombinants <- "Recombinants_WT_dataset.txt"
 
 # Read simulations summary statistics -------------------------------------
 
-# Get dataset
-sum_stats <- read.table(paste(path_sshfs, dir_simul, file_sum_stats, 
+sum_stats_simul <- read.table(paste(path_sshfs, dir_simul, file_sum_stats, 
                               sep = "/"),
                         header = T)
 
@@ -51,3 +54,20 @@ sum_stats_exp <- c(Rec1S_Rec2S_ratio,
                    quart_Rec2S)
 names(sum_stats_exp) <- names(sum_stats_simul)[col_sum_stats_simul]
 
+
+# Perform ABC -------------------------------------------------------------
+
+
+source("functions.R")
+perform_ABC(dataset_simul_sum_stats = sum_stats_simul, 
+            experimental_summary_statistics = sum_stats_exp,
+            col_params = col_parameters_simul,
+            col_sum_stats = col_sum_stats_simul
+            )
+
+
+
+
+log10_no_queues_WT(sum_stats)
+# 0.1083868 744.5252231 582.7702424  33.7459732  43.3697220
+# NCO comme avant mais les CO plus longs. Ratio OK
