@@ -30,4 +30,19 @@ perform_ABC <- function(dataset_simul_sum_stats,
 
 }
 
+get_max_density_ABC <- function(dataset_simul_sum_stats,
+                            experimental_summary_statistics, 
+                            col_params, col_sum_stats) {
+    
+    # Perform abc
+    abc_result <- perform_ABC(dataset_simul_sum_stats = sum_stats_simul, 
+                              experimental_summary_statistics = sum_stats_exp,
+                              col_params = col_parameters_simul,
+                              col_sum_stats = col_sum_stats_simul)
+    
+    # Get max of density function for each parameter
+    d <- apply(abc_result$adj.values[,names(dataset_simul_sum_stats[,col_params])], 
+               2, density)
+    return(t(as.matrix(lapply(d, function(dens) 10**dens$x[which.max(dens$y)]))))
+    
 }
