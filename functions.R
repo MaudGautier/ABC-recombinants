@@ -18,24 +18,13 @@ perform_ABC <- function(dataset_simul_sum_stats,
              method="loclinear")
     
     # Get max density
-    dens1 <- density(res$adj.values[,1])
-    dens2 <- density(res$adj.values[,2])
-    dens3 <- density(res$adj.values[,3])
-    dens4 <- density(res$adj.values[,4])
-    dens5 <- density(res$adj.values[,5])
-    
-    # Transform and return
-    return(c(10**dens1$x[which.max(dens1$y)],
-             10**dens2$x[which.max(dens2$y)],
-             10**dens3$x[which.max(dens3$y)],
-             10**dens4$x[which.max(dens4$y)],
-             10**dens5$x[which.max(dens5$y)]
-    ))
-    
-}
 
 specify_decimal <- function(x, k) trimws(format(round(x, k), nsmall=k))
 
+    #names(dataset_simul_sum_stats[,col_params])
+    d <- apply(res$adj.values[,names(dataset_simul_sum_stats[,col_params])], 2, density)
+    # d$Param_ratio_CO_NCO$x[which.max(d$Param_ratio_CO_NCO$y)]
+    return(lapply(d, function(dens) 10**dens$x[which.max(dens$y)]))
 
 log10_no_queues_WT <- function(DATASET)
 {
