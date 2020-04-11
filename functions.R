@@ -17,10 +17,17 @@ perform_ABC <- function(dataset_simul_sum_stats,
              tol=.05,
              method="loclinear")
     
-    # Get max density
-    #names(dataset_simul_sum_stats[,col_params])
-    d <- apply(res$adj.values[,names(dataset_simul_sum_stats[,col_params])], 2, density)
-    # d$Param_ratio_CO_NCO$x[which.max(d$Param_ratio_CO_NCO$y)]
-    return(lapply(d, function(dens) 10**dens$x[which.max(dens$y)]))
+    return(res)
+    
+    # # Get max density
+    # #names(dataset_simul_sum_stats[,col_params])
+    # d <- apply(res$adj.values[,names(dataset_simul_sum_stats[,col_params])], 2, density)
+    # # d$Param_ratio_CO_NCO$x[which.max(d$Param_ratio_CO_NCO$y)]
+    # return(#c(lapply(d, function(dens) 10**dens$x[which.max(dens$y)]),
+    #          apply(10**res$adj.values[,names(dataset_simul_sum_stats[,col_params])], 2, quantile, c(0.025,0.5,0.975)))
+    #        #)
+    #        
+
+}
 
 }
