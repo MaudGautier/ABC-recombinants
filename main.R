@@ -59,8 +59,17 @@ names(sum_stats_exp) <- names(sum_stats_simul)[col_sum_stats_simul]
 
 
 source("functions.R")
-perform_ABC(dataset_simul_sum_stats = sum_stats_simul, 
-            experimental_summary_statistics = sum_stats_exp,
-            col_params = col_parameters_simul,
-            col_sum_stats = col_sum_stats_simul
-            )
+# get_max_density_ABC(dataset_simul_sum_stats = sum_stats_simul, 
+#                     experimental_summary_statistics = sum_stats_exp,
+#                     col_params = col_parameters_simul,
+#                     col_sum_stats = col_sum_stats_simul)
+# get_CI_ABC(dataset_simul_sum_stats = sum_stats_simul, 
+#            experimental_summary_statistics = sum_stats_exp,
+#            col_params = col_parameters_simul,
+#            col_sum_stats = col_sum_stats_simul)
+
+get_max_dens_and_CI_ABC(dataset_simul_sum_stats = sum_stats_simul, 
+                        experimental_summary_statistics = sum_stats_exp,
+                        col_params = col_parameters_simul,
+                        col_sum_stats = col_sum_stats_simul)
+
