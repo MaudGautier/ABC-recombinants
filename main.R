@@ -14,7 +14,7 @@ path_sshfs <- "/Users/maudgautier/Documents/These/02_pandata_sshfs"
 dir_simul <- "5_HFM1/Simulations_ABC_for_HFM1"
 file_sum_stats <- "Results/Perform_ABC/Summary_statistics.txt"
 col_sum_stats_simul <- c(11:12, 14:16, 18, 20:22)
-col_parameters_simul <- 2:8
+col_parameters_simul <- 4:8
 
 # Biological experiment
 dir_exp <- "5_HFM1/Sequencing_1/05_Analyses_of_Recombinants/02_Recombinants_and_False_Positives_Dataset"
@@ -64,10 +64,3 @@ perform_ABC(dataset_simul_sum_stats = sum_stats_simul,
             col_params = col_parameters_simul,
             col_sum_stats = col_sum_stats_simul
             )
-
-
-
-
-log10_no_queues_WT(sum_stats)
-# 0.1083868 744.5252231 582.7702424  33.7459732  43.3697220
-# NCO comme avant mais les CO plus longs. Ratio OK
