@@ -40,7 +40,70 @@ path_recomb <- paste(path_sshfs, file_recombinants, sep = "/")
 sum_stats_exp <- create_sum_stats_of_experiment(path_recomb_file = path_recomb) 
 
 # Perform ABC
+write(capture.output(
+    get_max_dens_and_CI_ABC(dataset_simul_sum_stats = sum_stats_simul, 
                         experimental_summary_statistics = sum_stats_exp,
                         col_params = col_parameters_simul,
                         col_sum_stats = col_sum_stats_simul)
+    ), file = fileConn, append=TRUE )
+
+
+#### Seq1-MUT
+write("\n\nSeq1-MUT (S28353, S28367)", file = fileConn)
+
+# Summary statistics for biological experiment
+file_recombinants <- "5_HFM1/Sequencing_1/05_Analyses_of_Recombinants/02_Recombinants_and_False_Positives_Dataset/Recombinants_MUT_dataset.txt"    
+path_recomb <- paste(path_sshfs, file_recombinants, sep = "/")
+sum_stats_exp <- create_sum_stats_of_experiment(path_recomb_file = path_recomb) 
+
+# Perform ABC
+write(capture.output(
+    get_max_dens_and_CI_ABC(dataset_simul_sum_stats = sum_stats_simul, 
+                            experimental_summary_statistics = sum_stats_exp,
+                            col_params = col_parameters_simul,
+                            col_sum_stats = col_sum_stats_simul)
+), file = fileConn, append=TRUE )
+
+
+
+#### Seq2-WT
+write("\n\nSeq2-WT (S28359, S28377)", file = fileConn)
+
+# Summary statistics for biological experiment
+file_recombinants <- "5_HFM1/Sequencing_2/06_Analyses_of_Recombinants/02_Recombinants_and_False_Positives_Dataset/Recombinants_WT_dataset.txt"    
+path_recomb <- paste(path_sshfs, file_recombinants, sep = "/")
+sum_stats_exp <- create_sum_stats_of_experiment(path_recomb_file = path_recomb) 
+
+# Perform ABC
+write(capture.output(
+    get_max_dens_and_CI_ABC(dataset_simul_sum_stats = sum_stats_simul, 
+                            experimental_summary_statistics = sum_stats_exp,
+                            col_params = col_parameters_simul,
+                            col_sum_stats = col_sum_stats_simul)
+), file = fileConn, append=TRUE )
+
+
+
+#### Seq2-MUT
+write("\n\nSeq2-MUT (S28347, S28364)", file = fileConn)
+
+# Summary statistics for biological experiment
+file_recombinants <- "5_HFM1/Sequencing_2/06_Analyses_of_Recombinants/02_Recombinants_and_False_Positives_Dataset/Recombinants_MUT_dataset.txt"    
+path_recomb <- paste(path_sshfs, file_recombinants, sep = "/")
+sum_stats_exp <- create_sum_stats_of_experiment(path_recomb_file = path_recomb) 
+
+# Perform ABC
+write(capture.output(
+    get_max_dens_and_CI_ABC(dataset_simul_sum_stats = sum_stats_simul, 
+                            experimental_summary_statistics = sum_stats_exp,
+                            col_params = col_parameters_simul,
+                            col_sum_stats = col_sum_stats_simul)
+), file = fileConn, append=TRUE )
+
+
+
+#### Close output file
+close(fileConn)
+
+file.show(dest_file)
 
