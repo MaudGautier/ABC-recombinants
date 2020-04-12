@@ -151,3 +151,45 @@ write(capture.output(
 close(fileConn)
 
 file.show(dest_file)
+
+
+
+# Run ABC on all MUTs and all WTs -----------------------------------------
+
+
+#### Open output file
+dest_file <- "./output/Results_ABC_HFM1_MUTs_vs_WT.txt"
+if(file.exists(dest_file)) file.remove(dest_file) # need empty file before append
+fileConn<-file(dest_file, open='at')
+
+
+
+#### Write samples
+for (sample in c("MUT_ALL",
+                 "WT_ALL")) {
+    
+    # Summary statistics for biological experiment
+    path_recomb <- paste("./data/", sample, ".txt", sep="") 
+    nb_recomb <- nrow(read.table(path_recomb, header = T, comment = ""))
+    sum_stats_exp <- create_sum_stats_of_experiment(path_recomb_file = path_recomb) 
+    
+    # Write output
+    write(paste("\n\n", sample, "( N = ", nb_recomb, ")"), file = fileConn)
+    
+    # Perform ABC
+    write(capture.output(
+        get_max_dens_and_CI_ABC(dataset_simul_sum_stats = sum_stats_simul, 
+                                experimental_summary_statistics = sum_stats_exp,
+                                col_params = col_parameters_simul,
+                                col_sum_stats = col_sum_stats_simul)
+    ), file = fileConn, append=TRUE )
+    
+}
+
+#### Close output file
+close(fileConn)
+
+file.show(dest_file)
+
+
+
