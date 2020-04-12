@@ -22,8 +22,8 @@ cp /Users/maudgautier/Documents/These/02_pandata_sshfs/5_HFM1/Sequencing_1/05_An
 (head -n1 ./data/MUT_seq2.txt && grep S28364 ./data/MUT_seq2.txt) > ./data/MUT_S28364.txt
 
 # Combine all MUT and all WT
-(cat ./data/MUT_seq1.txt && tail -n +1 ./data/MUT_seq2.txt) > ./data/MUT_ALL.txt
-(cat ./data/WT_seq1.txt && tail -n +1 ./data/WT_seq2.txt) > ./data/WT_ALL.txt
+(cat ./data/MUT_seq1.txt && sed '1,1d' ./data/MUT_seq2.txt) > ./data/MUT_ALL.txt
+(cat ./data/WT_seq1.txt && sed '1,1d' ./data/WT_seq2.txt) > ./data/WT_ALL.txt
 
 
 
