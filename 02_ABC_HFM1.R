@@ -3,21 +3,17 @@
 
 library(abc)
 source("functions.R")
-path_sshfs <- "/Users/maudgautier/Documents/These/02_pandata_sshfs"
 
 
 
 # Summary statistics for simulations --------------------------------------
 
 # Parameters
-dir_simul <- "5_HFM1/Simulations_ABC_for_HFM1"
-file_sum_stats <- "Results/Perform_ABC/Summary_statistics.txt"
+file_sum_stats <- "./simulations/Summary_statistics.txt"
 col_sum_stats_simul <- c(11:12, 14:16, 18, 20:22)
 col_parameters_simul <- 4:8
 
-sum_stats_simul <- read.table(paste(path_sshfs, dir_simul, file_sum_stats, 
-                              sep = "/"),
-                        header = T)
+sum_stats_simul <- read.table(file_sum_stats, header = T)
 
 
 
