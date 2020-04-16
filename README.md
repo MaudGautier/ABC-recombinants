@@ -34,6 +34,12 @@ We then used [the R package `abc`](https://cran.r-project.org/web/packages/abc/i
 <img src="https://render.githubusercontent.com/render/math?math=\mathcal{D}^{*}"> was retained if 
 <img src="https://render.githubusercontent.com/render/math?math=d(\mathcal{S}^{*}, \mathcal{S}) \leq \epsilon">).
 
+This allows to infer the values of the parameters of interest, namely: the CO CT length mean
+<img src="https://render.githubusercontent.com/render/math?math=m_{CO}"> and standard deviation 
+<img src="https://render.githubusercontent.com/render/math?math=sd_{CO}">, the NCO CT length mean
+<img src="https://render.githubusercontent.com/render/math?math=m_{NCO}"> and standard deviation
+<img src="https://render.githubusercontent.com/render/math?math=sd_{NCO}">, and the CO:NCO ratio
+<img src="https://render.githubusercontent.com/render/math?math=r_{CO:NCO}">.
 
 ## References
 
