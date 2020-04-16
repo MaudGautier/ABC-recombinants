@@ -1,8 +1,6 @@
 # ABC-recombinants
 
-## Description
-
-### Overview 
+## Overview 
 
 This repository contains the approximate bayesian computation (ABC) analysis allowing to infer the true conversion tract length of COs and NCOs and the true ratio of CO:NCO.
 
@@ -25,13 +23,14 @@ In this case, the summary statistics are:
 * the observed mean and quartiles of Rec-2S <img src="https://render.githubusercontent.com/render/math?math=CT^{\star}"> lengths (<img src="https://render.githubusercontent.com/render/math?math=l_{Rec-2S}^{mean}">, <img src="https://render.githubusercontent.com/render/math?math=l_{Rec-2S}^{0.25}">, <img src="https://render.githubusercontent.com/render/math?math=l_{Rec-2S}^{0.5}">, <img src="https://render.githubusercontent.com/render/math?math=l_{Rec-2S}^{0.75}">).
 
  
-We then used [the R package `abc`](https://cran.r-project.org/web/packages/abc/index.html) described in [Csilléry et al., 2012](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/j.2041-210X.2011.00179.x) to select the simulated datasets <img src="https://render.githubusercontent.com/render/math?math=\mathcal{D^{*}}"> that ended in summary statistics <img src="https://render.githubusercontent.com/render/math?math=\mathcal{S^{*}}"> close to the summary statistics <img src="https://render.githubusercontent.com/render/math?math=\mathcal{S}"> of the experimental dataset <img src="https://render.githubusercontent.com/render/math?math=\mathcal{D}">, with a tolerance threshold (<img src="https://render.githubusercontent.com/render/math?math=\epsilon">) of 5\% (i.e.\ <img src="https://render.githubusercontent.com/render/math?math=\mathcal{D^{*}}"> was retained if <img src="https://render.githubusercontent.com/render/math?math=d(\mathcal{S^{*}}, \mathcal{S}) \leq \epsilon">).
-
-
-
-## Credits
-
-This workflow uses [the R package `abc`](https://cran.r-project.org/web/packages/abc/index.html) described in [Csilléry et al., 2012](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/j.2041-210X.2011.00179.x).
+We then used [the R package `abc`](https://cran.r-project.org/web/packages/abc/index.html) described in [Csilléry et al., 2012](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/j.2041-210X.2011.00179.x) to select the simulated datasets 
+<img src="https://render.githubusercontent.com/render/math?math=\mathcal{D}^{*}"> that ended in summary statistics 
+<img src="https://render.githubusercontent.com/render/math?math=\mathcal{S}^{*}"> close to the summary statistics 
+<img src="https://render.githubusercontent.com/render/math?math=\mathcal{S}"> of the experimental dataset 
+<img src="https://render.githubusercontent.com/render/math?math=\mathcal{D}">, with a tolerance threshold (
+<img src="https://render.githubusercontent.com/render/math?math=\epsilon">) of 5\% (i.e.\ 
+<img src="https://render.githubusercontent.com/render/math?math=\mathcal{D}^{*}"> was retained if 
+<img src="https://render.githubusercontent.com/render/math?math=d(\mathcal{S}^{*}, \mathcal{S}) \leq \epsilon">).
 
 
 
